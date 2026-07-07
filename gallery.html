@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>صورنا | نسر البرية للأكل الجاهز</title>
+<meta name="description" content="لقطات حقيقية من مطبخ نسر البرية وأصنافنا اليومية.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="siteHeader"></div>
+
+<!-- ===== PAGE HERO ===== -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="section-eyebrow">صورنا</div>
+    <h1>لقطات من مطبخ نسر البرية</h1>
+    <p>كل حاجة بتشوفها هنا طازة وحقيقية من شغلنا اليومي.</p>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="gallery section">
+  <div class="wrap">
+    <div class="gallery-grid reveal">
+      <div class="gphoto">
+        <img id="gImg1" src="">
+        <div class="gcap">دجاجة مشوية بالخضار</div>
+      </div>
+      <div class="gphoto">
+        <img id="gImg2" src="">
+        <div class="gcap">تشكيلة خضار طازة</div>
+      </div>
+      <div class="gphoto">
+        <img id="gImg3" src="">
+        <div class="gcap">سمك بلطي طازة</div>
+      </div>
+      <div class="gphoto">
+        <img id="gImg4" src="">
+        <div class="gcap">بامية طازة</div>
+      </div>
+      <div class="gphoto">
+        <img id="gImg5" src="">
+        <div class="gcap">سلطة كول سلو</div>
+      </div>
+      <div class="gphoto">
+        <img id="gImg6" src="">
+        <div class="gcap">خضار جاهزة للطبخ</div>
+      </div>
+      <div class="gphoto">
+        <img id="gImg7" src="">
+        <div class="gcap">بصل مفروم جاهز</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LINK TO MENU/ORDER ===== -->
+<section class="linkcards section tight">
+  <div class="wrap">
+    <div class="linkcards-grid reveal" style="grid-template-columns:repeat(2,1fr); max-width:760px; margin:0 auto;">
+      <a href="menu.html" class="linkcard">
+        <div class="lc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18M3 9h18M5 15h14M7 21h10"/></svg></div>
+        <h3>شوف المنيو كامل</h3>
+        <p>دجاج، لحوم، خضار طازة، وأصناف جاهزة.</p>
+        <span class="lc-go">اذهب للمنيو <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></span>
+      </a>
+      <a href="order.html" class="linkcard">
+        <div class="lc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+        <h3>اطلب دلوقتي</h3>
+        <p>واتساب، فيسبوك، أو فورم — اختار الأسهل ليك.</p>
+        <span class="lc-go">اطلب الآن <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div id="siteFooter"></div>
+
+<script src="assets.js"></script>
+<script src="layout.js"></script>
+<script>NESR_renderLayout('gallery');</script>
+<script>
+  document.getElementById('gImg1').src = NESR_ASSETS.roast_chicken;
+  document.getElementById('gImg2').src = NESR_ASSETS.veg_trays;
+  document.getElementById('gImg3').src = NESR_ASSETS.fish;
+  document.getElementById('gImg4').src = NESR_ASSETS.okra;
+  document.getElementById('gImg5').src = NESR_ASSETS.coleslaw;
+  document.getElementById('gImg6').src = NESR_ASSETS.mixed_veg;
+  document.getElementById('gImg7').src = NESR_ASSETS.onions;
+</script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المنيو | نسر البرية للأكل الجاهز</title>
+<meta name="description" content="منيو نسر البرية — دجاج ولحوم، خضار طازة، وأصناف جاهزة للتقديم.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="siteHeader"></div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="section-eyebrow">المنيو</div>
+    <h1>اختار وجبتك من نسر البرية</h1>
+    <p>أصناف طازة بتتجدد يوميًا من مطبخنا، اطلبها وهي جاهزة على طول.</p>
+  </div>
+</section>
+
+<!-- JUMP NAV -->
+<div style="padding:40px 0 0;">
+  <div class="wrap">
+    <div class="menu-jump reveal">
+      <a href="#chicken">🍗 دجاج ولحوم</a>
+      <a href="#produce">🥦 خضار طازة</a>
+      <a href="#sides">🥗 أصناف جاهزة</a>
+    </div>
+  </div>
+</div>
+
+<!-- MENU SECTIONS — filled by JS -->
+<section class="menu">
+  <div class="wrap">
+    <div class="menu-section" id="chicken">
+      <div class="menu-section-head reveal">
+        <div class="num">1</div>
+        <div><h2>دجاج ولحوم</h2><p>أطباق رئيسية متبلة ومطبوخة بعناية</p></div>
+      </div>
+      <div class="menu-grid" id="grid-chicken"></div>
+    </div>
+
+    <div class="menu-section" id="produce">
+      <div class="menu-section-head reveal">
+        <div class="num">2</div>
+        <div><h2>خضار طازة</h2><p>منتقاة يوميًا من أحسن مصادرنا</p></div>
+      </div>
+      <div class="menu-grid" id="grid-produce"></div>
+    </div>
+
+    <div class="menu-section" id="sides">
+      <div class="menu-section-head reveal">
+        <div class="num">3</div>
+        <div><h2>أصناف جاهزة</h2><p>معبأة ومجهزة، وفرلك وقت التحضير</p></div>
+      </div>
+      <div class="menu-grid" id="grid-sides"></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section class="community section tight">
+  <div class="wrap">
+    <div class="community-card reveal">
+      <div class="community-text">
+        <div class="section-eyebrow">جروبنا على فيسبوك</div>
+        <h2>انضم لمجتمع نسر البرية</h2>
+        <p>جروبنا على فيسبوك فيه أكتر من 6 آلاف عضو بيتابعوا الأصناف الجديدة ويطلبوا منه مباشرة.</p>
+      </div>
+      <div class="community-stat">
+        <b>+6,000</b>
+        <span>عضو نشط في الجروب</span>
+        <a href="https://www.facebook.com/groups/558806414271710/" target="_blank" rel="noopener" class="join-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
+          انضم للجروب دلوقتي
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="siteFooter"></div>
+
+<script src="assets.js"></script>
+<script src="layout.js"></script>
+<script>NESR_renderLayout('menu');</script>
+<script>
+// ── Load products.json and render cards ──────────────────────────
+fetch('products.json')
+  .then(r => r.json())
+  .then(products => renderMenu(products))
+  .catch(() => {
+    // fallback if fetch not available (e.g. opened as local file)
+    if(typeof NESR_PRODUCTS !== 'undefined') renderMenu(NESR_PRODUCTS);
+  });
+
+function renderMenu(products){
+  const grids = { chicken:'grid-chicken', produce:'grid-produce', sides:'grid-sides' };
+  Object.entries(grids).forEach(([cat, gridId]) => {
+    const grid = document.getElementById(gridId);
+    const items = products.filter(p => p.category === cat);
+    grid.innerHTML = items.map(p => `
+      <div class="dish reveal">
+        <div class="dish-photo">
+          ${p.badge ? `<span class="dish-badge">${p.badge}</span>` : ''}
+          <img src="${NESR_ASSETS[p.id] || ''}" loading="lazy">
+        </div>
+        <div class="dish-body">
+          <h4>${p.name}</h4>
+          <p>${p.desc}</p>
+          <div class="dish-foot">
+            <div class="dish-price">${p.price}<small> جنيه</small></div>
+            <a href="order.html" class="order-link-small">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/></svg>
+              اطلب
+            </a>
+          </div>
+        </div>
+      </div>`).join('');
+
+    // trigger reveal on new elements
+    grid.querySelectorAll('.reveal').forEach(el => {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+      }, {threshold:0.1});
+      io.observe(el);
+    });
+  });
+}
+</script>
+<script src="script.js"></script>
+</body>
+</html>
