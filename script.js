@@ -69,6 +69,12 @@
         });
       }
 
+      const notesTextarea = orderForm.querySelector('textarea[name="notes"]');
+      const productName = new URLSearchParams(window.location.search).get('product');
+      if(productName && notesTextarea && !notesTextarea.value.trim()){
+        notesTextarea.value = `طلب ${productName}`;
+      }
+
       orderForm.addEventListener('submit', (e) => {
         if(!orderForm.checkValidity()){
           e.preventDefault();
@@ -80,7 +86,7 @@
         const name = nameInput ? nameInput.value.trim() : '';
         const phone = phoneInput ? phoneInput.value.trim() : '';
         const address = orderForm.querySelector('input[name="address"]').value.trim();
-        const notes = orderForm.querySelector('textarea[name="notes"]').value.trim();
+        const notes = notesTextarea ? notesTextarea.value.trim() : '';
         const msg = `طلب جديد من موقع نسر البرية\nالاسم: ${name}\nالتليفون: ${phone}\nالعنوان: ${address}\nملاحظات: ${notes}`;
         window.open(`https://wa.me/201090213723?text=${encodeURIComponent(msg)}`, '_blank');
       });
