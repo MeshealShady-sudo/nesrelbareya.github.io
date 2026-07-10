@@ -69,10 +69,11 @@
         });
       }
 
+      const orderInput = orderForm.querySelector('input[name="order"]');
       const notesTextarea = orderForm.querySelector('textarea[name="notes"]');
       const productName = new URLSearchParams(window.location.search).get('product');
-      if(productName && notesTextarea && !notesTextarea.value.trim()){
-        notesTextarea.value = `طلب ${productName}`;
+      if(productName && orderInput && !orderInput.value.trim()){
+        orderInput.value = productName;
       }
 
       orderForm.addEventListener('submit', (e) => {
@@ -86,8 +87,9 @@
         const name = nameInput ? nameInput.value.trim() : '';
         const phone = phoneInput ? phoneInput.value.trim() : '';
         const address = orderForm.querySelector('input[name="address"]').value.trim();
+        const order = orderInput ? orderInput.value.trim() : '';
         const notes = notesTextarea ? notesTextarea.value.trim() : '';
-        const msg = `طلب جديد من موقع نسر البرية\nالاسم: ${name}\nالتليفون: ${phone}\nالعنوان: ${address}\nملاحظات: ${notes}`;
+        const msg = `طلب جديد من موقع نسر البرية\nالاسم: ${name}\nالتليفون: ${phone}\nالعنوان: ${address}\nالطلب: ${order}\nملاحظات: ${notes}`;
         window.open(`https://wa.me/201120360871?text=${encodeURIComponent(msg)}`, '_blank');
       });
     }
