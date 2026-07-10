@@ -88,7 +88,7 @@
         const address = orderForm.querySelector('input[name="address"]').value.trim();
         const notes = notesTextarea ? notesTextarea.value.trim() : '';
         const msg = `طلب جديد من موقع نسر البرية\nالاسم: ${name}\nالتليفون: ${phone}\nالعنوان: ${address}\nملاحظات: ${notes}`;
-        window.open(`https://wa.me/201090213723?text=${encodeURIComponent(msg)}`, '_blank');
+        window.open(`https://wa.me/201120360871?text=${encodeURIComponent(msg)}`, '_blank');
       });
     }
   });
